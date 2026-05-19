@@ -559,7 +559,7 @@ export default function Vetordle() {
             <ellipse cx="4.5" cy="14.5" rx="1.8" ry="2.5"/>
             <ellipse cx="19.5" cy="14.5" rx="1.8" ry="2.5"/>
           </svg>
-          <span style={{ fontSize:'1.3rem',fontWeight:'700',color:C.headerText,fontFamily:"'Playfair Display', Georgia, serif",letterSpacing:'0.01em' }}>Vetordle</span>
+          <span style={{ fontSize:'1.3rem',fontWeight:'700',color:C.headerText,fontFamily:"'Playfair Display', Georgia, serif",letterSpacing:'0.01em' }}><span style={{color:C.accent}}>VET</span>ordle</span>
           <span style={{ fontSize:'12px',color:C.headerMuted,fontFamily:"'Inter', sans-serif" }}>#{dayNum}</span>
         </div>
         <div style={{ fontSize:'12px',color:C.headerMuted,fontFamily:"'Inter', sans-serif" }}>{formatDate(dateKey)}</div>
@@ -621,7 +621,7 @@ export default function Vetordle() {
 
       {/* Footer */}
       <footer style={{ textAlign:'center',padding:'1rem',background:C.headerBg,color:'#7A9AAA',fontSize:'0.85rem',fontFamily:"'Inter', sans-serif",borderTop:`2px solid ${C.headerBg}` }}>
-        © {new Date().getFullYear()} Vetordle · vetordle.com · For educational purposes only
+        © {new Date().getFullYear()} VETordle · vetordle.com · For educational purposes only
       </footer>
     </div>
   );
