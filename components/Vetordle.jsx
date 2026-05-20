@@ -154,7 +154,7 @@ function buildShareText(moves, won, dayNum, dateStr) {
     return '🟥';
   }).join(' ');
   const score = won ? `${moves.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`;
-  return `Vetordle #${dayNum} — ${formatDate(dateStr)}\n🐾 ${emojis}\n${score}\n\nvetordle.com`;
+  return `VETordle #${dayNum} — ${formatDate(dateStr)}\n🐾 ${emojis}\n${score}\n\nvetordle.com`;
 }
 
 // ─── DESIGN TOKENS ───────────────────────────────────────────────────────────
