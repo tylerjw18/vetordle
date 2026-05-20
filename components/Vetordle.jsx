@@ -75,18 +75,13 @@ const DIAGNOSES = [
 ].sort();
 
 const MAX_GUESSES = 6;
-const START_DATE = new Date('2026-05-17T00:00:00-05:00');
+const START_DATE = new Date('2026-05-17T00:00:00Z');
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 function getDateKey() { return new Date().toISOString().split('T')[0]; }
 
 function getDayNumber() {
   return Math.floor((new Date() - START_DATE) / 864e5) + 1;
-}
-
-function getYesterday() {
-  const d = new Date(); d.setDate(d.getDate() - 1);
-  return d.toDateString();
 }
 
 function formatDate(dateStr) {
@@ -125,7 +120,7 @@ function loadStats() {
 }
 
 function computeUpdatedStats(stats, won, guessCount) {
-  const today = new Date().toDateString();
+  const today = new Date().toISOString().split('T')[0]; // UTC date
   if (stats.lastPlayedDate === today) return stats;
   const s = { ...stats, guessDistribution: { ...stats.guessDistribution } };
   s.gamesPlayed++;
@@ -134,7 +129,10 @@ function computeUpdatedStats(stats, won, guessCount) {
   if (won) {
     s.wins++;
     s.guessDistribution[String(guessCount)] = (s.guessDistribution[String(guessCount)] || 0) + 1;
-    const isConsecutive = stats.lastPlayedDate === getYesterday();
+    const yesterday = new Date();
+    yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    const isConsecutive = stats.lastPlayedDate === yesterdayStr;
     s.currentStreak = (isConsecutive || stats.currentStreak === 0) ? stats.currentStreak + 1 : 1;
     s.longestStreak = Math.max(s.longestStreak, s.currentStreak);
   } else {
